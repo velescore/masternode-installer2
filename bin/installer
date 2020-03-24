@@ -290,7 +290,7 @@ mn_extract() {
 
   echo "Starting Veles Masternode installation" > $LOG_FILE
   date >> $LOG_FILE
-  grep version ../masternode/version.py >> $LOG_FILE
+  #grep version ../masternode/version.py >> $LOG_FILE
   pre_config_wizard "install/vars.cf" "install/optionals.cf" || exit 0
   wiz_info_tiny "Installing dependencies ..."
   install_deps >> $LOG_FILE 2>&1
@@ -334,7 +334,7 @@ mn_extract_auto() {
 
   echo "Starting Veles Masternode installation" > $LOG_FILE
   date
-  grep version ../masternode/version.py
+  #grep version ../masternode/version.py
   pre_config_auto "install/vars.cf" "install/optionals.cf" || exit 0
   echo "[auto] Installing dependencies ..."
   install_deps
@@ -498,8 +498,8 @@ if [ "$1" == "" ] || [ "$1" == "install" ]; then
 elif [ "$1" == "--help" ] || [ "$1" == "help" ]; then
   show_help
 
-elif [ "$1" == "version" ] || [ "$1" == "--version" ]; then
-  cat masternode/version.py | grep version | grep -v '"""'
+#elif [ "$1" == "version" ] || [ "$1" == "--version" ]; then
+#  cat masternode/version.py | grep version | grep -v '"""'
 
 # Undocmented arguments for testing and development
 elif [ "$1" == "make_install" ]; then
