@@ -436,17 +436,7 @@ copy_install() {
 }
 
 copy_app() {
-  install_dir="${1}"
-  libexec_dir="/usr/libexec/veles"
-
-  # Install the main app as a system-wide python module
-  cd ${1} && python3 setup.py install
-
-  # Copy the main executable that loads the python module to the libexec dir
-  cp -av ${install_dir}/bin/run-job ${libexec_dir}/
-
-  # Restore the path
-  cd ${DATA_DIR}
+  pip3 install --system git+https://github.com/velescore/veles-masternode#egg=veles-masternode
 }
 
 show_logo() {
