@@ -436,7 +436,13 @@ copy_install() {
 }
 
 copy_app() {
-  pip3 install --system git+https://github.com/velescore/veles-masternode#egg=veles-masternode
+  # Enable to option to install it from local directory
+  if [ "${VELES_MN_SRC}" ] && [ -d "${VELES_MN_SRC}" ]; then
+    (cd "${VELES_MN_SRC}" ; python3 setup.py install)
+  # Install directly from git repo by default
+  else
+    pip3 install --system git+https://github.com/velescore/veles-masternode#egg=veles-masternode
+  fi
 }
 
 show_logo() {
